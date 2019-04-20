@@ -80,5 +80,6 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:liaohengrui/liaohengrui.github.io.git
+  repo: 
+    mygit: git@47.106.167.161:/var/repo/blog.git
   branch: master
