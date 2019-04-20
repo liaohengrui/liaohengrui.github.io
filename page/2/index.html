@@ -419,31 +419,17 @@
       
         
           
-            <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>哈希表是种数据结构,用于存储<strong>非重复</strong>的值。有两种实现方式哈希集合（Set）哈希映射（Map）</p>
-<h3 id="为什么要引入hash表这种数据结构？"><a href="#为什么要引入hash表这种数据结构？" class="headerlink" title="为什么要引入hash表这种数据结构？"></a>为什么要引入hash表这种数据结构？</h3><p>为了快速<strong>插入和搜索</strong>。数组查询快，插入慢。链表插入快，查询慢。 哈希表综合上述，将存储分成了很多数组，这样有效的降低了插入的复杂度，但同时也稍微的增加了查找的复杂度</p>
-<h1 id="简单图解哈希表"><a href="#简单图解哈希表" class="headerlink" title="简单图解哈希表"></a>简单图解哈希表</h1><p><img src="https://upload-images.jianshu.io/upload_images/11238837-4472139fec2efa29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="无标题.png"> 1. 要存储的元素放入hash函数里，得到hash值 2. 在hash的的存储数组里，寻找是否有存储记录 3. 若无冲突，存入。有冲突，说明已经存储过了，所以不做操作。</p>
-<h1 id="使用Java内置的哈希集合实践"><a href="#使用Java内置的哈希集合实践" class="headerlink" title="使用Java内置的哈希集合实践"></a>使用Java内置的哈希集合实践</h1><p>Set集合。有了上述的图解，我们可以理解，当我们想存储一个自定义类Node：</p>
-<pre><code>static class Node {
-       public int i;
-
-       public Node(int i) {
-           this.i = i;
-       }
-}
-</code></pre><p>我只关心Node里面的I的大小，以I的大小判断这个Node的唯一性。我需要重写</p>
-<pre><code>@Override
-public int hashCode() {
-    return i;
-}
-</code></pre><p>这个用于Hash函数的映射。但这仅仅够了吗？当然是否定的，Hash表还要判断这个Node是否已近在HashCode的存储数组里了，所以还应该重写</p>
-<pre><code>@Override
-public boolean equals(Object obj) {
-    Node node = (Node) obj;
-    return this.i == node.i;
-}
-</code></pre><p>用于判断这个Node是否存在</p>
-
-          
+          概念哈希表是种数据结构,用于存储非重复的值。有两种实现方式哈希集合（Set）哈希映射（Map）
+为什么要引入hash表这种数据结构？为了快速插入和搜索。数组查询快，插入慢。链表插入快，查询慢。 哈希表综合上述，将存储分成了很多数组，这样有效的降低了插入的复杂度，但同时也稍微的增加了查找的复杂度
+简单
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/22/hashtableconcept/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -638,18 +624,16 @@ public boolean equals(Object obj) {
       
         
           
-            <h1 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h1><p>链表是一种数据结构。但它不像数组，语法已经实现了。所以我们要通过自己的定义来实现 <img src="https://upload-images.jianshu.io/upload_images/11238837-3ebacfa9cf4bef89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen-shot-2018-04-17-at-161130.png"> easy,一个连接一个,就完事了,每一个都是一个独立体。所以先定义独立体结构 1. Value 字段：表示大小 2. prev 字段： 表示上一个节点 2. next 字段： 表示下一个节点</p>
-<pre><code>private class Node {
-   int val;
-   Node next, prev;
-
-   public Node(int val) {
-        this.val = val;
-   }
-}
-</code></pre><h1 id="实现–注意事项"><a href="#实现–注意事项" class="headerlink" title="实现–注意事项"></a>实现–注意事项</h1><p>最容易犯错的地方是 <strong>public void addAtIndex(int index, int val)</strong> 这个方法，在某个位置加入一个新的节点 <img src="https://upload-images.jianshu.io/upload_images/11238837-7ce1efcf5a4528f5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen-shot-2018-04-28-at-173055.png"> 最容易想当然实现方法，找到前面的节点和后面的节点，按照图上所示连接起来就OK了。 但是这样做有个问题 万一增加的位置是<strong>头节点或者尾节点</strong>，这样就会报空指针错误，因为它的前面或者后面没有节点了。所以，实现这个方法的时候判断下即可 <a href="https://github.com/liaohengrui/CodeDesign/blob/master/LeetCode/LinkedList/double_linked_list/DesignLinkedList.java" title="代码实现" target="_blank" rel="noopener">代码实现</a></p>
-
-          
+          链表链表是一种数据结构。但它不像数组，语法已经实现了。所以我们要通过自己的定义来实现  easy,一个连接一个,就完事了,每一个都是一个独立体。所以先定义独立体结构 1. Value 字段：表示大小 2. prev 字段： 表示上一个节点 2. next 字段： 表示下一个节点
+private cl
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/21/doublelinkedlist/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -844,16 +828,16 @@ public boolean equals(Object obj) {
       
         
           
-            <h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>在<strong>单链表</strong>中，我们知道一个节点指向下一个节点，如此循环下去。直到链表结束。也就是说我们只知道<strong>某个节点的下一个节点，上个节点却无法获知</strong>。那么有什么好的办法在单链表中实现回退，找到<strong>上个节点的办法</strong>。</p>
-<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>把每个节点迭代进入栈里面 <img src="https://upload-images.jianshu.io/upload_images/11238837-5e4f9e79b4b9dec4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="iterator.png"> 利用栈的特性FILO,正好能满足条件。想知道某个节点的上一个节点，只需要在栈中弹出来即可。</p>
-<h1 id="实现模式"><a href="#实现模式" class="headerlink" title="实现模式"></a>实现模式</h1><h3 id="Java的stack存储"><a href="#Java的stack存储" class="headerlink" title="Java的stack存储"></a>Java的stack存储</h3><p>这个比较节点，迭代下就可以了</p>
-<h3 id="递归形成调用栈"><a href="#递归形成调用栈" class="headerlink" title="递归形成调用栈"></a>递归形成调用栈</h3><p>看图理好理解! <img src="https://upload-images.jianshu.io/upload_images/11238837-76909e6af7f6c543.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="20170517153542944.jpg"> 递归到最后面去 <img src="https://upload-images.jianshu.io/upload_images/11238837-e962ecf32b6437b5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="20170517153555749.jpg"> 往上面返 <img src="https://upload-images.jianshu.io/upload_images/11238837-32379f592794624a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="20170517153616757.jpg"> 在往上面返 这样也可以实现栈的结构,只不过用的是内存栈</p>
-<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/explore/learn/card/linked-list/195/classic-problems/750/" title="反转链表" target="_blank" rel="noopener">反转链表</a> 反转一个单链表。</p>
-<pre><code>输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL
-输出: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL
-</code></pre><h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>按照上面的实现模式,很好实现,我是使用递归解决的 <a href="https://github.com/liaohengrui/CodeDesign/blob/master/LeetCode/LinkedList/single_list/ReverseListRecursion.java" title="代码实现" target="_blank" rel="noopener">代码实现</a></p>
-
-          
+          序言在单链表中，我们知道一个节点指向下一个节点，如此循环下去。直到链表结束。也就是说我们只知道某个节点的下一个节点，上个节点却无法获知。那么有什么好的办法在单链表中实现回退，找到上个节点的办法。
+栈把每个节点迭代进入栈里面  利用栈的特性FILO,正好能满足条件。想知道某个节点的上一个节点，只需要在
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/21/reverselist/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1048,36 +1032,19 @@ public boolean equals(Object obj) {
       
         
           
-            <h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>在刷LeetCode题目中，只要用到的双指针，都会发现网上很多解析都默认<strong>快指针的速度是慢指针的两倍</strong>，有的过分的甚至会说因为速度两倍，直接把这个<strong>二倍</strong>当做条件使用。如下图 <a href="https://i.loli.net/2018/11/18/5bf12a4bee04b.png" title="快慢指针" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/11/18/5bf12a4bee04b.png" alt="快慢指针" title="快慢指针"></a></p>
-<h3 id="在LeetCode中对此的解释是"><a href="#在LeetCode中对此的解释是" class="headerlink" title="在LeetCode中对此的解释是"></a>在LeetCode中对此的解释是</h3><blockquote>
-<p>如果有环，快指针最终将与慢指针相遇。</p>
-</blockquote>
-<pre><code>一个安全的选择是每次移动慢指针一步，而移动快指针两步。每一次迭代，快速指针将额外移动一步。如果环的长度为 M，经过 M 次迭代后，快指针肯定会多绕环一周，并赶上慢指针。
-</code></pre><p>也就是说一个安全的选择就是二倍，那么什么是<strong>安全</strong>，有为什么是<strong>二倍，不是三倍四倍</strong>，此处也没给出解释。对此，我深感异或。在思考了一整天终于想明白了。由此写出了这篇文章。</p>
-<h1 id="安全选择概念"><a href="#安全选择概念" class="headerlink" title="安全选择概念"></a>安全选择概念</h1><p>这里的安全的定义就是：<strong>如果慢指针在前面，快指针在后面，那么快指针一定会在某一刻与慢指针的position位置重合</strong>，不会因为快指针一次移动位置过长，而错过与慢指针的重合 ps：所谓的重合，是指一次迭代后，最后停下来的位置，而不是中间过程中，有过重合</p>
-<h3 id="安全原因"><a href="#安全原因" class="headerlink" title="安全原因"></a>安全原因</h3><p>因为快指针移动的步数是2，慢指针的步数是1。所以他们之间的<strong>距离每次迭代会减1</strong>。也就是说，无论如何，只要慢指针在快指针前面，某一时刻快指针一定能和慢指针<strong>重叠</strong>。</p>
-<ol>
-<li><p>快指针与慢指针之间差一步。此时继续往后走，慢指针前进一步，快指针前进两步，两者相遇。</p>
-</li>
-<li><p>快指针与慢指针之间差两步。此时继续往后走，慢指针前进一步，快指针前进两步，两者之间相差一步，转化为第一种情况</p>
-</li>
-</ol>
-<h3 id="三倍—N倍可能性分析"><a href="#三倍—N倍可能性分析" class="headerlink" title="三倍—N倍可能性分析"></a>三倍—N倍可能性分析</h3><p>同理如果快指针的步数是3，那么每次迭代也就是<strong>距离每次迭代会减2</strong>，如果有这么一种情况，<strong>慢指针在快指针前面一个位置</strong>。</p>
-<ol>
-<li>快指针与慢指针之间差一步。此时继续往后走，慢指针前进一步，快指针前进三步，快指针在慢指针前面。</li>
-</ol>
-<p>这样他们永不相遇（不考虑环，就算又环，又要绕多少圈才能相遇呢？其实要多绕一圈，自己想想撸）,也就是不安全的。 N倍也一样,不能保证一定相遇</p>
-<h1 id="相遇位置"><a href="#相遇位置" class="headerlink" title="相遇位置"></a>相遇位置</h1><p>在两倍速度的情况下，如果快慢指针同时从<strong>原点</strong>出发，下次相遇一定是<strong>原点</strong>！</p>
-<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p><img src="https://upload-images.jianshu.io/upload_images/11238837-4b618784046bbc65.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="无标题.png"></p>
-<ol>
-<li>相遇位置为B，B离出发位置A的距离为X</li>
-<li>总长N</li>
-<li><p>快指针比慢指针快一圈</p>
-<p>解方程<br>  2X=N+X<br>   X=N<br>相遇位置X正好是N，一圈。所以在原点相遇</p>
-</li>
-</ol>
+          序言在刷LeetCode题目中，只要用到的双指针，都会发现网上很多解析都默认快指针的速度是慢指针的两倍，有的过分的甚至会说因为速度两倍，直接把这个二倍当做条件使用。如下图 
+在LeetCode中对此的解释是
+如果有环，快指针最终将与慢指针相遇。
 
-          
+一个安全的选择是每次移动慢指针一步，而移动快指针两步
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/18/fastandslowpoint/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1272,16 +1239,18 @@ public boolean equals(Object obj) {
       
         
           
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/problems/minimum-size-subarray-sum/description/" title="原题链接" target="_blank" rel="noopener">原题链接</a> 给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的连续子数组。如果不存在符合条件的连续子数组，返回 0。</p>
-<h4 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h4><pre><code>输入: s = 7, nums = [2,3,1,2,4,3]
+          题目原题链接 给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的连续子数组。如果不存在符合条件的连续子数组，返回 0。
+示例:输入: s = 7, nums = [2,3,1,2,4,3]
 输出: 2
-解释: 子数组 [4,3] 是该条件下的长度最小的连续子数组。
-</code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>使用双指针，head，tail。构成一个区间，区间总和小了，tail后移增加区间总和。区间数总和大了，head后移，缩小区间。设置一个result用于记录最小的tail-head，result就是结果了</p>
-<pre><code>2  3  1  2  4  3
-h ------ t
-</code></pre><p>核心控制好tail和head的移动逻辑即可 <a href="https://github.com/liaohengrui/CodeDesign/blob/master/LeetCode/Arrays%26Strings/string/MinSubarray.java" title="实现代码" target="_blank" rel="noopener">实现代码</a></p>
-
-          
+解释: 子数组 [4,3] 是该条件下的长度最小的连续
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/15/minsubarray/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1465,14 +1434,15 @@ h ------ t
       
         
           
-            <h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>今天跟pushy大佬讨论netty写的https服务器布置到Apache服务器上。这个ssl到底是怎么加密解密的。 我觉得443端口是用户请求Apache的，所以这个过程中进行了一次ssl的加密解密，然后Apache在转发给netty服务器，netty服务器又进行了一次加密解密过程。 pushy大佬觉得，所谓的反向代理Apache只是负责转发，不会进行ssl的解密，而是netty进行解密。所以此过程只进行了一次ssl</p>
-<h1 id="正向代理概念"><a href="#正向代理概念" class="headerlink" title="正向代理概念"></a>正向代理概念</h1><p>所谓正向代理就是内网服务器主动要去请求外网的地址或服务，所进行的一种行为。外网—&gt;代理服务器—&gt;外网服务 简而言之<strong>代理服务器是外网</strong></p>
-<h1 id="反向代理概念"><a href="#反向代理概念" class="headerlink" title="反向代理概念"></a>反向代理概念</h1><p>所谓反向代理就是外网要访问内网服务而进行的一种行为。 外网—-&gt;代理服务器—&gt;内网服务 简而言之<strong>代理服务器是内网</strong></p>
-<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p><strong>和pushy大佬达成共识，我是对的</strong>，Apache服务器无论是在正向代理反向代理中都充当了客户端和服务端，作为服务端,在443端口进行了一次ssl，转发请求充当客户端，进行了一次ssl。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>从宏观上看，两者实现起来<strong>没区别</strong>，一个是用来转发外网的内容给客户。一个是用来转发内网的内容给客户 <a href="https://i.loli.net/2018/11/15/5bed2d939b334.jpg" title="代理" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/11/15/5bed2d939b334.jpg" alt="代理" title="代理"></a></p>
-<h1 id="未完成任务…"><a href="#未完成任务…" class="headerlink" title="未完成任务…"></a>未完成任务…</h1><p>nginx的正向代理反向代理配置 <a href="https://www.cnblogs.com/cuishuai/p/8073748.html" title="参考dalao的博客介绍" target="_blank" rel="noopener">参考dalao的博客介绍</a></p>
-
-          
+          序言今天跟pushy大佬讨论netty写的https服务器布置到Apache服务器上。这个ssl到底是怎么加密解密的。 我觉得443端口是用户请求Apache的，所以这个过程中进行了一次ssl的加密解密，然后Apache在转发给netty服务器，netty服务器又进行了一次加密解密过程。 pushy
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/15/forwardandreverseproxy/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1667,13 +1637,19 @@ h ------ t
       
         
           
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/explore/learn/card/array-and-string/198/introduction-to-array/772/" title="原题链接" target="_blank" rel="noopener">原题链接</a> 给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。 最高位数字存放在数组的首位， 数组中每个元素只存储一个数字。 你可以假设除了整数 0 之外，这个整数不会以零开头。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><pre><code>输入: [1,2,3]
+          题目原题链接 给定一个由整数组成的非空数组所表示的非负整数，在该数的基础上加一。 最高位数字存放在数组的首位， 数组中每个元素只存储一个数字。 你可以假设除了整数 0 之外，这个整数不会以零开头。
+示例输入: [1,2,3]
 输出: [1,2,4]
 解释: 输入数组表示数字 123。
-</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>设置一个temp作为进位标志，当运算到了数组首位，temp不为0，说明首位存在进位关系,调用jdk的API复制一个比原数组长一个单位的数组,0号位用来存temp。api<strong>System.arraycopy(digits, 0, newDigits, 1, digits.length),从digits的0号位复制到newDigits的1号位,复制长度为digits的长度(相当于克隆digits)</strong> <a href="https://github.com/liaohengrui/CodeDesign/blob/master/LeetCode/Arrays%26Strings/array/PlusOne.java" title="解题代码" target="_blank" rel="noopener">解题代码</a></p>
-
-          
+思路设置一个t
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/12/addone/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1868,14 +1844,17 @@ h ------ t
       
         
           
-            <h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><p>数组是一种基本的数据结构，用于按顺序存储元素的集合。但是元素可以任意存取，因为数组中的每个元素都可以通过数组索引来识别。 <img src="https://upload-images.jianshu.io/upload_images/11238837-81568d45e40ee69f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="screen-shot-2018-03-20-at-191856.png"> 优点：任意存储，效率高 缺点：不能长度有限，有局限性</p>
-<h1 id="动态数组"><a href="#动态数组" class="headerlink" title="动态数组"></a>动态数组</h1><p>大多数编程语言都提供内置的<strong>动态数组</strong>,JAVA中是ArrayList。</p>
-<h4 id="数组转换动态数组："><a href="#数组转换动态数组：" class="headerlink" title="数组转换动态数组："></a>数组转换动态数组：</h4><pre><code>new ArrayList&lt;&gt;(Arrays.asList(a));
-</code></pre><h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>注意如果a是一个<strong>原始类型的数组</strong>（也就是int[]、boolean[]），会出现如下效果<a href="https://i.loli.net/2018/11/12/5be9527852ed1.png" title="ArrayConversion" target="_blank" rel="noopener"><img src="https://i.loli.net/2018/11/12/5be9527852ed1.png" alt="ArrayConversion" title="ArrayConversion"></a></p>
-<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>int自身<strong>是原始类型不是类</strong>，所以是int[]<strong>就变成了1个类而已，不是数组(java语法，请勿与人类眼中的数组相提并论)</strong>。所以在<strong>asList(T… a)这个方法被使用的时候，a仅仅表达了1</strong>，而不是个数组。也就产生了上图所示的结果<strong>dynamicArry中只有一个元素，这个元素就是int[]对象</strong></p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>将<strong>int[]变成Integer[]，因为Integer本身就是个对象</strong>，所以Integer[]在java语法中被理解成数组了,上面的asList(T… a),这个a也就是Integer[]数组长度了</p>
-
-          
+          数组数组是一种基本的数据结构，用于按顺序存储元素的集合。但是元素可以任意存取，因为数组中的每个元素都可以通过数组索引来识别。  优点：任意存储，效率高 缺点：不能长度有限，有局限性
+动态数组大多数编程语言都提供内置的动态数组,JAVA中是ArrayList。
+数组转换动态数组：new ArrayLi
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/12/arrayanddynamicarray/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2070,78 +2049,20 @@ h ------ t
       
         
           
-            <p><strong>刷题碰到LeetCode</strong> <a href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/description/" title="94. 二叉树的中序遍历" target="_blank" rel="noopener">94. 二叉树的中序遍历</a> <strong>本来想用递归解决本问题，突然发现底下要求用进阶方法，迭代算法解决本题。所以来总结一下递归和迭代。</strong></p>
-<h1 id="何为迭代？"><a href="#何为迭代？" class="headerlink" title="何为迭代？"></a>何为迭代？</h1><p>首先我们来看下面这段简单的代码：</p>
-<pre><code>int sum(int n )
+          刷题碰到LeetCode 94. 二叉树的中序遍历 本来想用递归解决本问题，突然发现底下要求用进阶方法，迭代算法解决本题。所以来总结一下递归和迭代。
+何为迭代？首先我们来看下面这段简单的代码：
+int sum(int n )
 {
     int sum =0;
-    for(int i = 1 ; i &lt;= n;i++) sum+=n;//求解1~n的和
-    return sum;
-}
-</code></pre><p>从上述例子看,1一直加到N，每一次的运算结果都是上一次的结果加上新的i。因此，不难理解，迭代就是用<strong>旧数据不断的推导出新数据</strong></p>
-<h3 id="迭代的代码形式"><a href="#迭代的代码形式" class="headerlink" title="迭代的代码形式"></a>迭代的代码形式</h3><ol>
-<li>for、while循环：因为迭代需要不断的推导，所以for、while循环可以在代码中满足这点条件。</li>
-<li>有结束条件：也就是迭代次数，如for循环的i&lt;n。while循环的while（条件）</li>
-<li>for、while循环里面有推导规则：因为要用旧值推导新值，所以每次循环就是推导的运算法则。如：sum+=n</li>
-</ol>
-<h1 id="何为递归？"><a href="#何为递归？" class="headerlink" title="何为递归？"></a>何为递归？</h1><p>还是一样，让我们看看下面这个例子。</p>
-<pre><code>int sum(int n )
-{
-    if(n==1) return 1;
-    ﻿else return n+sum(n-1);
-}
-</code></pre><p>同样求1一直加到N的和，递归采用的是不断减少运算数据，一层一层的减下去，直到最后i=1返回1，然后在一层一层的返回上去。因此递归的本质就是<strong>自己调用自己</strong></p>
-<h3 id="递归的代码形式"><a href="#递归的代码形式" class="headerlink" title="递归的代码形式"></a>递归的代码形式</h3><ol>
-<li>自身调用：不断的调用自身达到拆分数据，最后求解</li>
-<li>有结束条件： if（满足条件）return 结果;</li>
-</ol>
-<h1 id="递归和迭代举例"><a href="#递归和迭代举例" class="headerlink" title="递归和迭代举例"></a>递归和迭代举例</h1><h4 id="斐波那契数列-f（n）-f（n-1）-f（n-2）"><a href="#斐波那契数列-f（n）-f（n-1）-f（n-2）" class="headerlink" title="斐波那契数列 f（n）=f（n-1）+f（n-2）"></a>斐波那契数列 f（n）=f（n-1）+f（n-2）</h4><pre><code>//1、迭代版本
-int fib(int n )
-{
-    if(n&lt;2) return 1;
-    int f0 = 1,f1=1;
-    for(int i = 2 ; i &lt; n ; i++){
-        int f2= f0+f1;
-        f0=f1;f1=f2;
-    }
-    return f1;
-}
-//2、递归版本
-int fib1(int n)
-{
-    if (n &lt;= 1) return 1;
-    return fib1(n-1) + fib1(n-2);
-}
-</code></pre><h1 id="递归转迭代"><a href="#递归转迭代" class="headerlink" title="递归转迭代"></a>递归转迭代</h1><h3 id="尾递归转换成迭代"><a href="#尾递归转换成迭代" class="headerlink" title="尾递归转换成迭代"></a>尾递归转换成迭代</h3><p>尾递归：递归的特殊情况，函数调用出现在函数尾部的递归方式。上述两个例子都输入尾递归。 尾递归可以轻松的转换成迭代方式。这里就不在具体说明了。</p>
-<h3 id="非尾递归转换成迭代"><a href="#非尾递归转换成迭代" class="headerlink" title="非尾递归转换成迭代"></a>非尾递归转换成迭代</h3><p>非尾递归转换成迭代就必须用到堆栈，简而言之，就是用<strong>栈结构来模拟函数调用</strong>（调用栈）。</p>
-<pre><code>//快速排序的迭代版本
-//注：这里的partition函数省略
-void QuickSort1(int beg, int end)
-{
-    if (end - beg &lt;= 1) return;
-    int pos = partition(beg, end);
-    QuickSort1(beg, pos);
-    QuickSort1(pos + 1, end);
-}
-//利用堆栈转成成迭代版本
-void QuickSort2(int beg, int end) 
-{
-    ﻿stack&lt;pair&lt;int ,int&gt;&gt; temp_stack;//利用堆栈来保存begin和end的值
-    ﻿temp_stack.push(pair&lt;int,int&gt;(begin,end));
-    ﻿while(!temp.empty())//堆栈不为空则继续循环
-    ﻿{
-    ﻿    ﻿pair&lt;int,int&gt;  tmp = temp_stack.top();
-    ﻿    ﻿temp_stack.pop();//模拟函数调用，去除栈顶元素，对其进行处理
-    ﻿    ﻿if(temp.second - tmp.first &gt; 1)//和递归版本一样，只剩两个数的时候结束递归，否则继续压栈
-    ﻿    ﻿{
-    ﻿    ﻿    ﻿int pos = partition(beg, end);  
-    ﻿    ﻿    ﻿temp_stack.push(pair&lt;int,int&gt;(tmp.first,pos));
-    ﻿    ﻿    ﻿temp_stack.push(pair&lt;int,int&gt;(pos+1,tmp.second));
-    ﻿    ﻿}
-    ﻿}
-}
-</code></pre>
-          
+    for(int i = 1 ;
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/09/iterativeandrecursion/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2336,55 +2257,16 @@ void QuickSort2(int beg, int end)
       
         
           
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p><a href="https://leetcode-cn.com/explore/learn/card/queue-stack/219/stack-and-dfs/884/" title="原题链接" target="_blank" rel="noopener">原题链接</a> 克隆一张无向图，图中的每个节点包含一个 label （标签）和一个 neighbors （邻接点）列表 。简单的说就是<strong>遍历图</strong>，把每个节点<strong>对象</strong>重新new出来，new出来的新对象，里面的值（neighbors 、label）与<strong>原对象相同</strong></p>
-<h6 id="节点对象表现如下"><a href="#节点对象表现如下" class="headerlink" title="节点对象表现如下"></a>节点对象表现如下</h6><pre><code>class UndirectedGraphNode {
-        int label;
-        List&lt;UndirectedGraphNode&gt; neighbors;
-
-        UndirectedGraphNode(int x) {
-            label = x;
-            neighbors = new ArrayList&lt;UndirectedGraphNode&gt;();
-        }
-    }
-</code></pre><h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h4><p>节点被唯一标记。 我们用 # 作为每个节点的分隔符，用 , 作为节点标签和邻接点的分隔符。 例如，序列化无向图 {0,1,2#1,2#2,2}。 该图总共有三个节点, 被两个分隔符 # 分为三部分。 1. 第一个节点的标签为 0，存在从节点 0 到节点 1 和节点 2 的两条边。 2. 第二个节点的标签为 1，存在从节点 1 到节点 2 的一条边。 3. 第三个节点的标签为 2，存在从节点 2 到节点 2 (本身) 的一条边，从而形成自环。 我们将图形可视化如下：</p>
-<pre><code>   1
-  / \
- /   \
-0 --- 2
-     / \
-     \_/
-</code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>采用<strong>BFS（Queue）</strong>遍历节点,且遍历避免<strong>重复遍历（使用Set集合）</strong>，因为要克隆对象所以采用<strong>Map</strong>保存原始对象和克隆对象。</p>
-<ol>
-<li><p>克隆Queue拿出来的节点</p>
-<p>if (cloneMap.containsKey(root)) {</p>
-<pre><code>cloneNode = cloneMap.get(root);
-} else {
-cloneNode = new UndirectedGraphNode(root.label);
-cloneMap.put(root, cloneNode);
-</code></pre><p>}</p>
-</li>
-</ol>
-<ol start="2">
-<li><p>克隆节点的neighbors （邻接点)，并为其添加到上面的克隆节点的neighbors （邻接点)。</p>
-<p> for (UndirectedGraphNode neighborhood : root.neighbors) {</p>
-<pre><code>UndirectedGraphNode cloneNeighborhood;
-if (cloneMap.containsKey(neighborhood)) {
-    cloneNeighborhood = cloneMap.get(neighborhood);
-} else {
-    cloneNeighborhood = new UndirectedGraphNode(neighborhood.label);
-    cloneMap.put(neighborhood, cloneNeighborhood);
-}
-if (set.add(neighborhood)) {
-    BFSQueue.offer(neighborhood);
-    cloneNode.neighbors.add(cloneNeighborhood);
-} else {
-    cloneNode.neighbors.add(cloneNeighborhood);
-</code></pre><p>}</p>
-</li>
-</ol>
-<p><a href="https://github.com/liaohengrui/CodeDesign/blob/master/LeetCode/Queue%26Stack/stack/CloneGraph.java" title="代码实现连接" target="_blank" rel="noopener">代码实现连接</a></p>
-
-          
+          题目原题链接 克隆一张无向图，图中的每个节点包含一个 label （标签）和一个 neighbors （邻接点）列表 。简单的说就是遍历图，把每个节点对象重新new出来，new出来的新对象，里面的值（neighbors 、label）与原对象相同
+节点对象表现如下class UndirectedGr
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/08/clonegraph/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
