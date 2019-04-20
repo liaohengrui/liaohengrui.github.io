@@ -263,6 +263,236 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mapleo.xin/2018/11/22/hashtableconcept/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="带带蓝蜗牛">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BlueSnail">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/22/hashtableconcept/" itemprop="url">哈希表的概念与表现方式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-22T18:16:41+08:00">
+                2018-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/哈希表/" itemprop="url" rel="index">
+                    <span itemprop="name">哈希表</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/哈希表/基本概念/" itemprop="url" rel="index">
+                    <span itemprop="name">基本概念</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/哈希表/基本概念/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/22/hashtableconcept/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/22/hashtableconcept/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  354
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>哈希表是种数据结构,用于存储<strong>非重复</strong>的值。有两种实现方式哈希集合（Set）哈希映射（Map）</p>
+<h3 id="为什么要引入hash表这种数据结构？"><a href="#为什么要引入hash表这种数据结构？" class="headerlink" title="为什么要引入hash表这种数据结构？"></a>为什么要引入hash表这种数据结构？</h3><p>为了快速<strong>插入和搜索</strong>。数组查询快，插入慢。链表插入快，查询慢。 哈希表综合上述，将存储分成了很多数组，这样有效的降低了插入的复杂度，但同时也稍微的增加了查找的复杂度</p>
+<h1 id="简单图解哈希表"><a href="#简单图解哈希表" class="headerlink" title="简单图解哈希表"></a>简单图解哈希表</h1><p><img src="https://upload-images.jianshu.io/upload_images/11238837-4472139fec2efa29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="无标题.png"> 1. 要存储的元素放入hash函数里，得到hash值 2. 在hash的的存储数组里，寻找是否有存储记录 3. 若无冲突，存入。有冲突，说明已经存储过了，所以不做操作。</p>
+<h1 id="使用Java内置的哈希集合实践"><a href="#使用Java内置的哈希集合实践" class="headerlink" title="使用Java内置的哈希集合实践"></a>使用Java内置的哈希集合实践</h1><p>Set集合。有了上述的图解，我们可以理解，当我们想存储一个自定义类Node：</p>
+<pre><code>static class Node {
+       public int i;
+
+       public Node(int i) {
+           this.i = i;
+       }
+}
+</code></pre><p>我只关心Node里面的I的大小，以I的大小判断这个Node的唯一性。我需要重写</p>
+<pre><code>@Override
+public int hashCode() {
+    return i;
+}
+</code></pre><p>这个用于Hash函数的映射。但这仅仅够了吗？当然是否定的，Hash表还要判断这个Node是否已近在HashCode的存储数组里了，所以还应该重写</p>
+<pre><code>@Override
+public boolean equals(Object obj) {
+    Node node = (Node) obj;
+    return this.i == node.i;
+}
+</code></pre><p>用于判断这个Node是否存在</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+  	
+     </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://mapleo.xin/2018/11/21/doublelinkedlist/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2191,206 +2421,6 @@ if (set.add(neighborhood)) {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mapleo.xin/2018/11/06/validvbrackets/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="带带蓝蜗牛">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/head.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="BlueSnail">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/06/validvbrackets/" itemprop="url">有效的括号</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T05:32:50+08:00">
-                2018-11-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据结构/队列-amp-栈/" itemprop="url" rel="index">
-                    <span itemprop="name">队列 &amp; 栈</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/11/06/validvbrackets/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/06/validvbrackets/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  136
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]‘ 的字符串，判断字符串是否有效。 有效字符串需满足： 1. 左括号必须用相同类型的右括号闭合。 2. 左括号必须以正确的顺序闭合。 注意空字符串可被认为是有效字符串。</p>
-<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1:"></a>示例 1:</h4><pre><code>输入: &quot;()[]{}&quot;
-输出: true
-</code></pre><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>使用栈结构,<strong>后进先出</strong>,左括号入栈,发现右括号,弹出栈顶元素,进行左右括号匹配,若匹配失败返回false <a href="https://github.com/liaohengrui/CodeDesign/blob/master/LeetCode/Queue%26Stack/stack/ValidBrackets.java" title="代码实现连接" target="_blank" rel="noopener">代码实现连接</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-  	
-     </div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2443,7 +2473,7 @@ if (set.add(neighborhood)) {
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2454,12 +2484,21 @@ if (set.add(neighborhood)) {
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>
@@ -2509,7 +2548,7 @@ if (set.add(neighborhood)) {
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://maplefan.com/" title="晚向风" target="_blank">晚向风</a>
+                    <a href="https://maplefan.com/" title="风向晚" target="_blank">风向晚</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
@@ -2553,7 +2592,7 @@ if (set.add(neighborhood)) {
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">10.2k</span>
+    <span title="Site words total count">10.8k</span>
   
 </div>
 
