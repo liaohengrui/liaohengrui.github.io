@@ -83,3 +83,5 @@ deploy:
   repo: 
     mygit: git@47.106.167.161:/var/repo/blog.git
   branch: master
+
+

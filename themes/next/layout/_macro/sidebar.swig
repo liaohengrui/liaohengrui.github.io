@@ -134,7 +134,7 @@
               </ul>
             </div>
           {% endif %}
-
+          <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=300 height=110 src="//music.163.com/outchain/player?type=0&id=2763932735&auto=1&height=90"></iframe>
           {% include '../_custom/sidebar.swig' %}
         </div>
       </section>
