@@ -9,7 +9,12 @@ tags:
 	- MySQL
 ---
 
+![win_7_maplestory-001.jpg](https://user-gold-cdn.xitu.io/2019/4/29/16a66b3f943d3718?w=820&h=512&f=jpeg&s=77289)
+为了面试GG
+<!-- more --> 
+
 # 前言
+
 探讨下，数据库背后的索引原理，深入明白为什么以下内容
 
 - B Tree 数据结构
